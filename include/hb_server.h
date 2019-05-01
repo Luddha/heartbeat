@@ -8,3 +8,9 @@
  *
  *
  */
+
+int start_server(char *ip, int port);
+
+
+
+int handle_client();
