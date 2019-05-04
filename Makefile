@@ -3,7 +3,7 @@ CFLAGS=-Iinclude/
 DEPS = common.h
 OBJDIR=./build/
 SRCDIR=./src/
-OBJ = $(addprefix $(OBJDIR), heartbeat.o common.o)
+OBJ = $(addprefix $(OBJDIR), heartbeat.o common.o hb_server.o)
 BINDIR=./bin/
 
 

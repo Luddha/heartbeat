@@ -4,7 +4,7 @@
 
 
 void error_msg(char *msg){
-	dprintf(2, "[!] Error: %s", msg);
+	dprintf(2, "[!] Error: %s\n", msg);
 	exit(-1);
 
 }

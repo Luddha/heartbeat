@@ -9,7 +9,7 @@
  *
  */
 
-int start_server(char *ip, int port);
+void start_server(char *ip, int port);
 
 
 
