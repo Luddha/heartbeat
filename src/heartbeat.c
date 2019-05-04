@@ -2,6 +2,7 @@
 
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -29,13 +30,13 @@ int main(int argc, char **argv){
 	char ip[15];
 	int port;
 
-	while ((opt = getopt(argc, argv, optstring) != -1)){
+	while ((opt = getopt(argc, argv, optstring)) != -1){
 		switch (opt){
 			case 'i':
-				strncpy(ip, opt, 15);
+				strncpy(ip, optarg, 15);
 				break;
 			case 'p':
-				port = atoi(opt);
+				port = atoi(optarg);
 				break;
 			case 'h':
 				usage();
@@ -53,6 +54,8 @@ int main(int argc, char **argv){
 	struct sockaddr_in client;
 	char buffer[65535];
 	int buf_size;
+	int socket_len = sizeof(client);
+
 
 	strncpy(buffer, "Connection Successful!", 22);
 
@@ -70,7 +73,7 @@ int main(int argc, char **argv){
 	listen(sockfd, 5);
 
 	while (1){
-		client_fd = accept(sockfd, &client, sizeof(client));
+		client_fd = accept(sockfd, (struct sockaddr*)&client, &socket_len);
 		if (client_fd < 0){
 			error_msg("failed to accept connection");
 		}
